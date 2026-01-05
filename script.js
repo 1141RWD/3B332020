@@ -3,7 +3,7 @@
 // ===== 商品資料定義 (已加入所有新照片，邏輯與 ID 保持原樣) =====
 const allProducts = [
   // --- 男裝系列 ---
-  { name: "男裝 兩穿寬褲(褲管可拆)", price: 990, img: "男裝 兩穿寬褲(褲管可拆).jpg", gender: "male", type: "pants" },
+  { name: "男裝 兩穿寬褲(褲管可拆)", price: 490, img: "男裝 兩穿寬褲(褲管可拆).jpg", gender: "male", type: "pants" },
   { name: "男裝 牛仔超寬版工作褲", price: 890, img: "男裝 牛仔超寬版工作褲.jpg", gender: "male", type: "pants" },
   { name: "男裝 休閒上衣(經典內毛圈)", price: 590, img: "男裝 休閒上衣(經典內毛圈).jpg", gender: "male", type: "tops" },
   { name: "男裝 Heavy weight重磅內刷毛休閒褲", price: 790, img: "男裝 Heavy weight重磅內刷毛休閒褲.jpg", gender: "male", type: "pants" },
@@ -15,7 +15,7 @@ const allProducts = [
   { name: "男裝 男女適穿 水洗華夫格boxy T(寬版)", price: 590, img: "男裝 男女適穿 水洗華夫格boxy T(寬版).jpg", gender: "male", type: "tops" },
 
   // --- 女裝系列 ---
-  { name: "女裝 Puff空氣感oversized休閒上衣", price: 790, img: "女裝 Puff空氣感oversized休閒上衣.jpg", gender: "female", type: "tops" },
+  { name: "女裝 Puff空氣感oversized休閒上衣", price: 690, img: "女裝 Puff空氣感oversized休閒上衣.jpg", gender: "female", type: "tops" },
   { name: "女裝 打褶寬褲(格紋)", price: 890, img: "女裝 打褶寬褲(格紋).jpg", gender: "female", type: "pants" },
   { name: "女裝 Heavy weight重磅短版休閒連帽上衣", price: 690, img: "女裝 Heavy weight重磅短版休閒連帽上衣.jpg", gender: "female", type: "tops" },
   { name: "女裝 合身喇叭牛仔褲", price: 990, img: "女裝 合身喇叭牛仔褲.jpg", gender: "female", type: "pants" },
