@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>購物車</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" style="max-width:800px; margin:40px auto; background:#fff; padding:24px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+  <button onclick="history.back()" style="background:#8B5E3C; color:#fff; border:none; padding:10px 20px; cursor:pointer; border-radius:4px; margin-bottom:20px">← 返回</button>
+  <h2>購物車</h2>
+  <div id="items"></div>
+  <p style="font-size:20px; text-align:right">總金額：$<span id="total">0</span></p>
+  <button style="width:100%; padding:15px; background:#8B5E3C; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:16px" onclick="checkout()">結帳</button>
+</div>
+
+<script src="script.js"></script>
+<script>
+let localCart=JSON.parse(localStorage.getItem("cart"))||[];
+function renderCart(){
+  const itemsBox=document.getElementById("items");
+  const totalEl=document.getElementById("total");
+  itemsBox.innerHTML="";
+  let total=0;
+  localCart.forEach((item,idx)=>{
+    total += item.price*item.qty;
+    const div=document.createElement("div");
+    div.style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:15px 0;";
+    div.innerHTML=`<div>${item.name} (${item.size}) x ${item.qty}</div><div>$${item.price*item.qty} <button onclick="removeItem(${idx})" style="margin-left:10px; background:#ff4d4d; color:#fff; border:none; padding:5px 10px; cursor:pointer; border-radius:4px">刪除</button></div>`;
+    itemsBox.appendChild(div);
+  });
+  totalEl.innerText=total;
+}
+function removeItem(idx){ localCart.splice(idx,1); localStorage.setItem("cart",JSON.stringify(localCart)); renderCart(); updateCartCount(); }
+function checkout(){
+  if(!localCart.length){ alert("結帳失敗，請新增商品"); return; }
+  if(localStorage.getItem("login")!=="true"){ alert("請先登入"); location.href="login.html"; return; }
+  alert(`結帳成功！總金額：$${document.getElementById("total").innerText}`);
+  localStorage.removeItem("cart"); location.href="index.html";
+}
+renderCart();
+</script>
+</body>
+</html>

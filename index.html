@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Wear</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h2 onclick="location.reload()" style="cursor:pointer; letter-spacing: 2px;">COFFEE WEAR</h2>
+  <nav>
+    <div class="nav-item">
+      <a>MENS 男裝</a>
+      <div class="dropdown">
+        <a onclick="filterBy('male', 'tops')">男裝上衣</a>
+        <a onclick="filterBy('male', 'pants')">男裝褲裝</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a>WOMENS 女裝</a>
+      <div class="dropdown">
+        <a onclick="filterBy('female', 'tops')">女裝上衣</a>
+        <a onclick="filterBy('female', 'pants')">女裝褲裝</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a>KIDS 童裝</a>
+      <div class="dropdown">
+        <a onclick="filterBy('kids', 'tops')">童裝上衣</a>
+        <a onclick="filterBy('kids', 'pants')">童裝褲裝</a>
+      </div>
+    </div>
+    <a href="cart.html" style="text-decoration:none; color:var(--dark); margin-left:20px;">🛒 (<span id="cartCount">0</span>)</a>
+    <a id="memberLink" href="login.html" style="margin-left:20px; font-weight:bold; cursor:pointer; text-decoration:none;">登入 / 註冊</a>
+  </nav>
+</header>
+
+<div id="memberMenu">
+  <h4>會員中心</h4>
+  <div id="userInfo"></div>
+  <button style="width:100%; margin-top:15px; background:#999; color:#fff; padding:10px; border:none; border-radius:4px; cursor:pointer;" onclick="logout()">登出帳號</button>
+</div>
+
+<div class="search-bar">
+  <input id="searchInput" placeholder="搜尋商品名稱...">
+  <button onclick="searchProducts()">搜尋</button>
+</div>
+
+<div class="carousel" id="carousel">
+  <img src="https://picsum.photos/1100/400?random=10" class="active">
+  <img src="https://picsum.photos/1100/400?random=11">
+  <img src="https://picsum.photos/1100/400?random=12">
+  <button class="arrow" style="left:20px;" onclick="prevSlide()">‹</button>
+  <button class="arrow" style="right:20px;" onclick="nextSlide()">›</button>
+  <div class="dots" id="dots"></div>
+</div>
+
+<div class="container">
+  <div id="displayTitle" style="text-align:center; font-size:24px; margin:40px 0 20px;">最新商品</div>
+  <section class="products" id="products-list"></section>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button style="position:absolute; top:20px; right:20px; background:none; border:none; font-size:24px; color:#aaa; cursor:pointer;" onclick="closeModal()">✕</button>
+    <div class="modal-left"><img id="modalImg"></div>
+    <div class="modal-right">
+      <h3 id="modalName" style="margin-top:0;"></h3>
+      <p class="price" id="modalPrice"></p>
+      <div style="margin:25px 0;">
+        <p style="font-size:14px; color:#888;">選擇尺寸</p>
+        <div id="sizeBtns">
+          <button onclick="selectSize('S',this)" style="padding:10px 20px; margin-right:8px; border:1px solid #ddd; background:#fff; cursor:pointer;">S</button>
+          <button onclick="selectSize('M',this)" style="padding:10px 20px; margin-right:8px; border:1px solid #ddd; background:#fff; cursor:pointer;">M</button>
+          <button onclick="selectSize('L',this)" style="padding:10px 20px; border:1px solid #ddd; background:#fff; cursor:pointer;">L</button>
+        </div>
+      </div>
+      <p style="font-size:14px; color:#888;">選擇數量</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(-1)">-</button>
+        <span id="qtyValue">1</span>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+      <button onclick="addModalToCart()" style="width:100%; padding:15px; background:var(--btn); color:#fff; border:none; border-radius:6px; cursor:pointer;">加入購物車</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

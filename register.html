@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>會員註冊</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" style="max-width:500px; background:#fff; padding:40px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.1)">
+  <h2 style="text-align:center; color:#8B5E3C">註冊帳號</h2>
+  <label>姓氏</label><input id="reg-lastname" placeholder="姓氏" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #ddd; border-radius:4px">
+  <label>Email</label><input id="reg-email" placeholder="Email" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #ddd; border-radius:4px">
+  <label>密碼</label><input id="reg-password" type="password" placeholder="密碼" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #ddd; border-radius:4px">
+  <label>通訊地址</label><input id="reg-address" placeholder="地址" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #ddd; border-radius:4px">
+  <label>出生年月日</label><input id="reg-birth" type="date" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #ddd; border-radius:4px">
+  <label>性別</label>
+  <div style="margin-bottom:15px">
+    <label><input type="radio" name="gender" value="男"> 男</label> 
+    <label><input type="radio" name="gender" value="女"> 女</label>
+  </div>
+  <label>通訊電話</label><input id="reg-phone" placeholder="電話" style="width:100%; margin-bottom:20px; padding:10px; border:1px solid #ddd; border-radius:4px">
+  <button onclick="register()" style="width:100%; padding:15px; background:#8B5E3C; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:16px">確認註冊</button>
+</div>
+<script>
+function register(){
+  const lastname=document.getElementById("reg-lastname").value;
+  const email=document.getElementById("reg-email").value;
+  const password=document.getElementById("reg-password").value;
+  const address=document.getElementById("reg-address").value;
+  const birth=document.getElementById("reg-birth").value;
+  const gender=document.querySelector('input[name="gender"]:checked')?.value || "未填寫";
+  const phone=document.getElementById("reg-phone").value;
+  if(!lastname||!email||!password){ alert("請填寫必填欄位"); return; }
+  localStorage.setItem("user", JSON.stringify({lastname, email, password, address, birth, gender, phone}));
+  alert("註冊成功！"); location.href="login.html";
+}
+</script>
+</body>
+</html>

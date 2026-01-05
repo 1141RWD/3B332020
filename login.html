@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>會員登入</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" style="max-width:400px; margin-top:100px; background:#fff; padding:40px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.1)">
+  <h2 style="text-align:center; color:#8B5E3C">會員登入</h2>
+  <input id="email" placeholder="Email" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:6px">
+  <input id="pass" type="password" placeholder="密碼" style="width:100%; padding:12px; margin-bottom:20px; border:1px solid #ddd; border-radius:6px">
+  <button onclick="login()" style="width:100%; padding:12px; background:#8B5E3C; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:16px">登入</button>
+  <button onclick="location.href='register.html'" style="width:100%; margin-top:10px; background:none; color:#8B5E3C; border:1px solid #8B5E3C; padding:10px; border-radius:6px; cursor:pointer">註冊新帳號</button>
+</div>
+<script>
+function login(){
+  const user=JSON.parse(localStorage.getItem("user"));
+  const e=document.getElementById("email").value;
+  const p=document.getElementById("pass").value;
+  if(user && user.email===e && user.password===p){
+    localStorage.setItem("login","true");
+    location.href="index.html";
+  } else { alert("帳號或密碼錯誤"); }
+}
+</script>
+</body>
+</html>
